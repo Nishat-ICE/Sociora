@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sociora - Login</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="login-page">
+
+
+    <!-- =========================
+         LEFT HERO
+    ========================== -->
+
+    <section class="login-hero">
+
+        <div class="glow glow-1"></div>
+
+        <div class="glow glow-2"></div>
+
+        <div class="glow glow-3"></div>
+
+
+        <div class="dots dots-top">
+            • • •
+            <br>
+            • • •
+            <br>
+            • • •
+        </div>
+
+
+        <div class="hero-content">
+
+            <div class="sociora-logo">
+                S
+            </div>
+
+
+            <h1>
+                Sociora
+            </h1>
+
+
+            <p class="tagline">
+                Connect&nbsp;&nbsp;·&nbsp;&nbsp;Share&nbsp;&nbsp;·&nbsp;&nbsp;Grow
+            </p>
+
+
+            <div class="hero-text">
+
+                <h2>
+                    A community<br>
+                    for meaningful connections
+                </h2>
+
+                <p>
+                    Share your thoughts, discover new people,
+                    and be part of a positive community.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="wave"></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LOGIN SECTION
+    ========================== -->
+
+    <section class="login-section">
+
+        <div class="login-card">
+
+
+            <div class="welcome">
+
+                <h2>
+                    Welcome back 👋
+                </h2>
+
+                <p>
+                    Login to your Sociora account
+                </p>
+
+            </div>
+
+
+
+            <form id="loginForm">
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FORGOT -->
+
+                <div class="forgot-row">
+
+                    <a href="forgot-password.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginButton"
+                >
+
+                    <span>
+                        Login
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <div
+                    id="errorMessage"
+                    class="auth-message"
+                ></div>
+
+
+            </form>
+
+
+
+            <!-- DIVIDER -->
+
+            <div class="divider">
+
+                <span></span>
+
+                <p>
+                    OR
+                </p>
+
+                <span></span>
+
+            </div>
+
+
+
+            <!-- SOCIAL -->
+
+            <div class="social-login">
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    onclick="socialMessage('Google')"
+                >
+                    <strong class="google">
+                        G
+                    </strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    onclick="socialMessage('GitHub')"
+                >
+                    <strong class="github">
+                        ●
+                    </strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    onclick="socialMessage('LinkedIn')"
+                >
+                    <strong class="linkedin">
+                        in
+                    </strong>
+                </button>
+
+            </div>
+
+
+
+            <!-- REGISTER -->
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create one
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.querySelector(".show-password");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        button.textContent = "◉";
+
+    }
+
+    else {
+
+        password.type = "password";
+
+        button.textContent = "◌";
+
+    }
+
+}
+
+
+
+/* =========================
+   SOCIAL
+========================= */
+
+function socialMessage(name) {
+
+    const message =
+        document.getElementById("errorMessage");
+
+    message.textContent =
+        name + " login is coming soon.";
+
+    message.className =
+        "auth-message loading";
+
+}
+
+
+
+/* =========================
+   LOGIN
+========================= */
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("errorMessage");
+
+
+            const button =
+                document
+                    .getElementById("loginButton");
+
+
+            message.textContent =
+                "Logging in...";
+
+
+            message.className =
+                "auth-message loading";
+
+
+            button.disabled = true;
+
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/auth/login",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials:
+                                "include",
+
+                            body:
+                                JSON.stringify({
+                                    email: email,
+                                    password: password
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (!response.ok) {
+
+                    message.textContent =
+                        data.message ||
+                        "Invalid email or password.";
+
+                    message.className =
+                        "auth-message error";
+
+                    button.disabled = false;
+
+                    return;
+
+                }
+
+
+
+                message.textContent =
+                    "Login successful!";
+
+                message.className =
+                    "auth-message success";
+
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "../index.html";
+
+                    },
+                    500
+                );
+
+
+            }
+
+            catch(error) {
+
+                message.textContent =
+                    "Server connection failed.";
+
+                message.className =
+                    "auth-message error";
+
+                button.disabled = false;
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

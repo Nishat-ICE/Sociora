@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sociora</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+                <div class="brand-logo">S</div>
+                <span>Sociora</span>
+            </a>
+
+        </div>
+
+
+        <div class="nav-center">
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="navSearch"
+                    placeholder="Search Sociora..."
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <button
+                class="nav-icon-btn"
+                onclick="toggleTheme()"
+                title="Toggle theme"
+            >
+                ◐
+            </button>
+
+
+            <a
+                href="pages/notifications.html"
+                class="nav-icon-btn notification-btn"
+                title="Notifications"
+            >
+                ♡
+
+                <span
+                    id="notificationBadge"
+                    class="notification-badge"
+                    style="display:none;"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a
+                href="pages/messages.html"
+                class="nav-icon-btn"
+                title="Messages"
+            >
+                ✉
+            </a>
+
+
+            <button
+                id="navProfile"
+                class="nav-profile"
+                title="Profile"
+            >
+                <span id="navProfileLetter">U</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN LAYOUT ================= -->
+
+    <div class="app-layout">
+
+
+        <!-- ================= LEFT SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-user">
+
+                <div
+                    class="sidebar-avatar"
+                    id="sidebarAvatar"
+                >
+                    U
+                </div>
+
+                <div>
+
+                    <strong id="sidebarUsername">
+                        User
+                    </strong>
+
+                    <small>
+                        Welcome back
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="index.html"
+                    class="side-link active"
+                >
+                    <span>⌂</span>
+                    Home
+                </a>
+
+
+                <a
+                    href="pages/explore.html"
+                    class="side-link"
+                >
+                    <span>◈</span>
+                    Explore
+                </a>
+
+
+                <a
+                    href="pages/notifications.html"
+                    class="side-link"
+                >
+                    <span>♡</span>
+                    Notifications
+
+                    <span
+                        id="sidebarNotificationBadge"
+                        class="side-badge"
+                        style="display:none;"
+                    >
+                        0
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/messages.html"
+                    class="side-link"
+                >
+                    <span>✉</span>
+                    Messages
+                </a>
+
+
+                <a
+                    href="pages/profile.html"
+                    class="side-link"
+                >
+                    <span>◎</span>
+                    Profile
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    class="side-link theme-side-btn"
+                    onclick="toggleTheme()"
+                >
+                    <span>◐</span>
+                    Dark / Light Mode
+                </button>
+
+
+                <button
+                    class="side-link logout-btn"
+                    onclick="logout()"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================= FEED ================= -->
+
+        <main class="feed">
+
+            <div class="feed-header">
+
+                <div>
+
+                    <h1>Home</h1>
+
+                    <p>
+                        See what's happening on Sociora.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CREATE POST -->
+
+            <section class="create-post-card">
+
+                <div class="create-post-top">
+
+                    <div
+                        class="post-avatar"
+                        id="createPostAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <textarea
+                        id="postContent"
+                        rows="3"
+                        placeholder="What's on your mind?"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="create-post-bottom">
+
+                    <span class="post-helper">
+                        Share something with your community.
+                    </span>
+
+
+                    <button
+                        id="postButton"
+                        class="primary-btn"
+                    >
+                        Post
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- POSTS -->
+
+            <section
+                id="postsContainer"
+                class="posts-container"
+            >
+
+                <div class="loading">
+                    Loading posts...
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- ================= RIGHT SIDEBAR ================= -->
+
+        <aside class="right-sidebar">
+
+
+            <div class="right-card">
+
+                <div class="right-card-title">
+                    <h3>Welcome to Sociora</h3>
+                </div>
+
+                <p>
+                    Connect with people, share your thoughts,
+                    and discover new conversations.
+                </p>
+
+            </div>
+
+
+
+            <div class="right-card">
+
+                <div class="right-card-title">
+
+                    <h3>Quick Links</h3>
+
+                </div>
+
+
+                <a
+                    href="pages/explore.html"
+                    class="quick-link"
+                >
+                    <span>◈</span>
+                    Explore people
+                </a>
+
+
+                <a
+                    href="pages/messages.html"
+                    class="quick-link"
+                >
+                    <span>✉</span>
+                    Messages
+                </a>
+
+
+                <a
+                    href="pages/profile.html"
+                    class="quick-link"
+                >
+                    <span>◎</span>
+                    My profile
+                </a>
+
+
+                <a
+                    href="pages/notifications.html"
+                    class="quick-link"
+                >
+                    <span>♡</span>
+                    Notifications
+                </a>
+
+            </div>
+
+
+
+            <div class="right-card about-card">
+
+                <h3>Sociora</h3>
+
+                <p>
+                    A modern social platform built for
+                    connection and community.
+                </p>
+
+                <small>
+                    © 2026 Sociora
+                </small>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/app.js"></script>
+
+
+    <script>
+
+        /*
+         * Profile button
+         */
+
+        const navProfile =
+            document.getElementById("navProfile");
+
+        if (navProfile) {
+
+            navProfile.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "pages/profile.html";
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Notification polling
+         */
+
+        async function updateNotificationBadge() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/notifications/count",
+                        {
+                            credentials: "include"
+                        }
+                    );
+
+                if (!response.ok) return;
+
+                const data =
+                    await response.json();
+
+                const count =
+                    Number(data.count || 0);
+
+
+                const badge =
+                    document.getElementById(
+                        "notificationBadge"
+                    );
+
+                const sideBadge =
+                    document.getElementById(
+                        "sidebarNotificationBadge"
+                    );
+
+
+                if (badge) {
+
+                    badge.textContent =
+                        count > 99
+                            ? "99+"
+                            : count;
+
+                    badge.style.display =
+                        count > 0
+                            ? "flex"
+                            : "none";
+
+                }
+
+
+                if (sideBadge) {
+
+                    sideBadge.textContent =
+                        count > 99
+                            ? "99+"
+                            : count;
+
+                    sideBadge.style.display =
+                        count > 0
+                            ? "inline-flex"
+                            : "none";
+
+                }
+
+            } catch (error) {
+
+                console.log(
+                    "Notification update skipped."
+                );
+
+            }
+
+        }
+
+
+        updateNotificationBadge();
+
+        setInterval(
+            updateNotificationBadge,
+            10000
+        );
+
+    </script>
+
+</body>
+</html>

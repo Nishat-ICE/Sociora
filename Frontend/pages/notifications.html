@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sociora - Notifications</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        .notification-page {
+            max-width: 800px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+        }
+
+
+        .notification-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .notification-header h1 {
+            font-size: 28px;
+        }
+
+
+        .read-all-btn {
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+
+        .notification {
+            background: var(--card);
+
+            padding: 18px;
+
+            margin-bottom: 10px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            gap: 15px;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .notification.unread {
+            border-left:
+                4px solid #4f46e5;
+
+            background:
+                #f5f3ff;
+        }
+
+
+        body.dark-mode
+        .notification.unread {
+            background: #25283a;
+        }
+
+
+        .notification-avatar {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+        }
+
+
+        .notification-message {
+            flex: 1;
+
+            color: var(--text);
+
+            line-height: 1.5;
+        }
+
+
+        .notification-time {
+            font-size: 12px;
+
+            color: var(--muted);
+
+            margin-top: 5px;
+        }
+
+
+        .empty {
+            background: var(--card);
+
+            border-radius: 18px;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        @media(max-width:600px) {
+
+            .notification-page {
+                padding: 10px;
+            }
+
+
+            .notification-header h1 {
+                font-size: 23px;
+            }
+
+
+            .read-all-btn {
+                font-size: 12px;
+
+                padding: 9px 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <a
+        href="../index.html"
+        class="brand"
+    >
+
+        <div class="brand-logo">
+
+            <svg viewBox="0 0 50 50" fill="none">
+
+                <path
+                    d="M35 13C31 10 27 8 22 8C16 8 12 11 12 16C12 21 16 23 24 25C32 27 37 30 37 36C37 42 32 45 25 45C19 45 14 43 10 39"
+                    stroke="white"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                />
+
+            </svg>
+
+        </div>
+
+        <span>Sociora</span>
+
+    </a>
+
+
+    <a
+        href="../index.html"
+        class="side-link"
+    >
+        ← Home
+    </a>
+
+</header>
+
+
+
+<main class="notification-page">
+
+
+    <div class="notification-header">
+
+        <h1>
+            Notifications
+        </h1>
+
+
+        <button
+            class="read-all-btn"
+            onclick="markAllRead()"
+        >
+            Mark all as read
+        </button>
+
+    </div>
+
+
+    <div id="notifications">
+
+        <div class="empty">
+            Loading notifications...
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+// ======================================================
+// LOAD NOTIFICATIONS
+// ======================================================
+
+async function loadNotifications() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/notifications",
+                {
+                    credentials:
+                        "include"
+                }
+            );
+
+
+        if (
+            response.status === 401
+        ) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const notifications =
+            await response.json();
+
+
+        const container =
+            document.getElementById(
+                "notifications"
+            );
+
+
+        if (
+            !Array.isArray(
+                notifications
+            ) ||
+            notifications.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    <h3>
+                        No notifications yet
+                    </h3>
+
+                    <p>
+                        You're all caught up.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML =
+            notifications
+                .map(
+                    notification =>
+                        createNotificationHTML(
+                            notification
+                        )
+                )
+                .join("");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "notifications"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                Failed to load notifications.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// ======================================================
+// CREATE NOTIFICATION
+// ======================================================
+
+function createNotificationHTML(
+    notification
+) {
+
+    const username =
+        notification.sender_username ||
+        "Sociora";
+
+
+    const avatar =
+        notification.sender_avatar ||
+        "https://via.placeholder.com/45";
+
+
+    const message =
+        escapeHTML(
+            notification.message
+        );
+
+
+    const time =
+        new Date(
+            notification.created_at
+        ).toLocaleString();
+
+
+    return `
+
+        <div
+            class="
+                notification
+                ${
+                    notification.is_read
+                        ? ""
+                        : "unread"
+                }
+            "
+            onclick="
+                markRead(
+                    ${notification.id}
+                )
+            "
+        >
+
+            <img
+                class="notification-avatar"
+                src="${avatar}"
+                alt=""
+            >
+
+
+            <div
+                class="notification-message"
+            >
+
+                <strong>
+                    ${escapeHTML(
+                        username
+                    )}
+                </strong>
+
+                ${message}
+
+
+                <div
+                    class="notification-time"
+                >
+                    ${time}
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+// ======================================================
+// MARK ONE AS READ
+// ======================================================
+
+async function markRead(id) {
+
+    try {
+
+        await fetch(
+            `/api/notifications/${id}/read`,
+            {
+                method: "PUT",
+
+                credentials:
+                    "include"
+            }
+        );
+
+
+        loadNotifications();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+// ======================================================
+// MARK ALL AS READ
+// ======================================================
+
+async function markAllRead() {
+
+    try {
+
+        await fetch(
+            "/api/notifications/read-all",
+            {
+                method: "PUT",
+
+                credentials:
+                    "include"
+            }
+        );
+
+
+        loadNotifications();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+// ======================================================
+// ESCAPE HTML
+// ======================================================
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+loadNotifications();
+
+</script>
+
+
+</body>
+
+</html>

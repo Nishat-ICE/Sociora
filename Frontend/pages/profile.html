@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sociora - Profile</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        .profile-page {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .profile-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .profile-avatar-large {
+            width: 130px;
+            height: 130px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 48px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .profile-email {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .profile-bio {
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .profile-stat {
+            text-align: center;
+        }
+
+        .profile-stat strong {
+            display: block;
+            font-size: 20px;
+        }
+
+        .profile-stat span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .profile-actions {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .profile-edit {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .profile-edit h2 {
+            margin-bottom: 15px;
+        }
+
+        .profile-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .profile-form input,
+        .profile-form textarea {
+            width: 100%;
+            padding: 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: var(--bg);
+            color: var(--text);
+
+            outline: none;
+        }
+
+        .profile-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .secondary-btn {
+            padding: 10px 17px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: var(--card);
+            color: var(--text);
+
+            font-weight: 600;
+        }
+
+        .secondary-btn:hover {
+            background: var(--bg);
+        }
+
+        @media (max-width: 600px) {
+
+            .profile-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="navbar">
+
+        <a
+            href="../index.html"
+            class="brand"
+        >
+
+            <div class="brand-logo">
+                S
+            </div>
+
+            <span>
+                Sociora
+            </span>
+
+        </a>
+
+
+        <div class="nav-right">
+
+            <button
+                class="nav-icon-btn theme-btn"
+                onclick="toggleTheme()"
+            >
+                ◐ Dark
+            </button>
+
+
+            <a
+                href="../index.html"
+                class="nav-icon-btn"
+                title="Home"
+            >
+                ⌂
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="profile-page">
+
+        <div class="profile-card">
+
+
+            <div class="profile-top">
+
+
+                <div
+                    class="profile-avatar-large"
+                    id="profileAvatar"
+                >
+                    U
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h1 id="profileUsername">
+                        Loading...
+                    </h1>
+
+                    <div
+                        class="profile-email"
+                        id="profileEmail"
+                    ></div>
+
+
+                    <div
+                        class="profile-bio"
+                        id="profileBio"
+                    ></div>
+
+
+                    <div class="profile-stats">
+
+                        <div class="profile-stat">
+
+                            <strong
+                                id="postsCount"
+                            >
+                                0
+                            </strong>
+
+                            <span>
+                                Posts
+                            </span>
+
+                        </div>
+
+
+                        <div class="profile-stat">
+
+                            <strong
+                                id="followersCount"
+                            >
+                                0
+                            </strong>
+
+                            <span>
+                                Followers
+                            </span>
+
+                        </div>
+
+
+                        <div class="profile-stat">
+
+                            <strong
+                                id="followingCount"
+                            >
+                                0
+                            </strong>
+
+                            <span>
+                                Following
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-actions">
+
+                <label
+                    class="avatar-upload-label"
+                    id="avatarUploadLabel"
+                >
+
+                    📷
+                    Upload Profile Picture
+
+                    <input
+                        type="file"
+                        id="avatarInput"
+                        accept="image/png,image/jpeg,image/jpg,image/webp,image/gif"
+                    >
+
+                </label>
+
+
+                <button
+                    class="secondary-btn"
+                    id="followButton"
+                    style="display:none;"
+                >
+                    Follow
+                </button>
+
+            </div>
+
+
+            <div
+                class="avatar-upload-preview"
+                id="avatarUploadStatus"
+            ></div>
+
+
+            <div
+                class="profile-edit"
+                id="editSection"
+            >
+
+                <h2>
+                    Edit Profile
+                </h2>
+
+
+                <div class="profile-form">
+
+                    <textarea
+                        id="bioInput"
+                        placeholder="Write something about yourself..."
+                    ></textarea>
+
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Location"
+                    >
+
+
+                    <input
+                        type="text"
+                        id="websiteInput"
+                        placeholder="Website"
+                    >
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveProfile()"
+                    >
+                        Save Profile
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/theme.js"></script>
+
+
+    <script>
+
+        let profileUserId = null;
+
+        let myProfile = false;
+
+
+        async function loadProfile() {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            profileUserId =
+                params.get("id");
+
+
+            const endpoint =
+                profileUserId
+                    ? `/api/profile/${profileUserId}`
+                    : `/api/profile/me`;
+
+
+            myProfile =
+                !profileUserId;
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        endpoint,
+                        {
+                            credentials: "include"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                renderProfile(
+                    data
+                );
+
+            } catch (error) {
+
+                document.getElementById(
+                    "profileUsername"
+                ).textContent =
+                    "Could not load profile.";
+
+            }
+
+        }
+
+
+        function renderProfile(
+            profile
+        ) {
+
+            const username =
+                profile.username ||
+                "User";
+
+
+            document.getElementById(
+                "profileUsername"
+            ).textContent =
+                username;
+
+
+            document.getElementById(
+                "profileEmail"
+            ).textContent =
+                profile.email || "";
+
+
+            document.getElementById(
+                "profileBio"
+            ).textContent =
+                profile.bio || "No bio yet.";
+
+
+            document.getElementById(
+                "postsCount"
+            ).textContent =
+                profile.posts_count || 0;
+
+
+            document.getElementById(
+                "followersCount"
+            ).textContent =
+                profile.followers_count || 0;
+
+
+            document.getElementById(
+                "followingCount"
+            ).textContent =
+                profile.following_count || 0;
+
+
+            const avatar =
+                document.getElementById(
+                    "profileAvatar"
+                );
+
+
+            if (profile.avatar) {
+
+                avatar.innerHTML =
+                    `<img
+                        src="${profile.avatar}"
+                        class="profile-avatar-image"
+                        alt="Profile picture"
+                    >`;
+
+            } else {
+
+                avatar.textContent =
+                    username
+                        .charAt(0)
+                        .toUpperCase();
+
+            }
+
+
+            if (myProfile) {
+
+                document.getElementById(
+                    "editSection"
+                ).style.display =
+                    "block";
+
+
+                document.getElementById(
+                    "avatarUploadLabel"
+                ).style.display =
+                    "inline-flex";
+
+
+                document.getElementById(
+                    "bioInput"
+                ).value =
+                    profile.bio || "";
+
+
+                document.getElementById(
+                    "locationInput"
+                ).value =
+                    profile.location || "";
+
+
+                document.getElementById(
+                    "websiteInput"
+                ).value =
+                    profile.website || "";
+
+            } else {
+
+                document.getElementById(
+                    "editSection"
+                ).style.display =
+                    "none";
+
+
+                document.getElementById(
+                    "avatarUploadLabel"
+                ).style.display =
+                    "none";
+
+
+                const followButton =
+                    document.getElementById(
+                        "followButton"
+                    );
+
+
+                followButton.style.display =
+                    "inline-block";
+
+
+                followButton.textContent =
+                    Number(profile.is_following)
+                        ? "Unfollow"
+                        : "Follow";
+
+
+                followButton.onclick =
+                    function () {
+
+                        toggleFollow(
+                            profile.id,
+                            Number(
+                                profile.is_following
+                            )
+                        );
+
+                    };
+
+            }
+
+        }
+
+
+        async function saveProfile() {
+
+            const bio =
+                document.getElementById(
+                    "bioInput"
+                ).value;
+
+
+            const location =
+                document.getElementById(
+                    "locationInput"
+                ).value;
+
+
+            const website =
+                document.getElementById(
+                    "websiteInput"
+                ).value;
+
+
+            const response =
+                await fetch(
+                    "/api/profile",
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        credentials: "include",
+
+                        body: JSON.stringify({
+                            bio,
+                            location,
+                            website
+                        })
+                    }
+                );
+
+
+            if (response.ok) {
+
+                alert(
+                    "Profile updated successfully."
+                );
+
+                loadProfile();
+
+            } else {
+
+                alert(
+                    "Could not update profile."
+                );
+
+            }
+
+        }
+
+
+        async function uploadAvatar(
+            file
+        ) {
+
+            if (!file) return;
+
+
+            const status =
+                document.getElementById(
+                    "avatarUploadStatus"
+                );
+
+
+            if (
+                file.size >
+                5 * 1024 * 1024
+            ) {
+
+                status.textContent =
+                    "Image must be smaller than 5 MB.";
+
+                return;
+
+            }
+
+
+            const formData =
+                new FormData();
+
+
+            formData.append(
+                "avatar",
+                file
+            );
+
+
+            status.textContent =
+                "Uploading...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/profile/avatar",
+                        {
+                            method: "POST",
+
+                            credentials: "include",
+
+                            body: formData
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    status.textContent =
+                        data.message ||
+                        "Upload failed.";
+
+                    return;
+
+                }
+
+
+                status.textContent =
+                    "Profile picture updated!";
+
+
+                loadProfile();
+
+            } catch (error) {
+
+                status.textContent =
+                    "Upload failed.";
+
+            }
+
+        }
+
+
+        document
+            .getElementById("avatarInput")
+            .addEventListener(
+                "change",
+                function () {
+
+                    uploadAvatar(
+                        this.files[0]
+                    );
+
+                }
+            );
+
+
+        async function toggleFollow(
+            userId,
+            isFollowing
+        ) {
+
+            const response =
+                await fetch(
+                    `/api/users/${userId}/follow`,
+                    {
+                        method:
+                            isFollowing
+                                ? "DELETE"
+                                : "POST",
+
+                        credentials: "include"
+                    }
+                );
+
+
+            if (response.ok) {
+
+                loadProfile();
+
+            }
+
+        }
+
+
+        loadProfile();
+
+    </script>
+
+</body>
+
+</html>

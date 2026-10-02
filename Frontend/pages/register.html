@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account | Sociora</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="register-page">
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="register-nav">
+
+        <a
+            href="../index.html"
+            class="register-brand"
+        >
+
+            <div class="brand-logo">
+                S
+            </div>
+
+            Sociora
+
+        </a>
+
+
+        <div class="nav-account">
+
+            Already have an account?
+
+            <a href="login.html">
+                Sign in
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="register-main">
+
+
+        <div class="register-layout">
+
+
+            <!-- =========================
+                 LEFT HERO
+            ========================== -->
+
+            <section class="register-hero">
+
+
+                <h1>
+
+                    Join the
+
+                    <span>
+                        conversation.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Create your space on Sociora,
+                    share what matters to you,
+                    discover new people, and build
+                    meaningful connections.
+
+                </p>
+
+
+                <div class="register-features">
+
+
+                    <div class="register-feature">
+
+                        <div class="feature-icon">
+                            ✦
+                        </div>
+
+                        <span>
+                            Meet people
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="register-feature">
+
+                        <div class="feature-icon">
+                            ♡
+                        </div>
+
+                        <span>
+                            Share ideas
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="register-feature">
+
+                        <div class="feature-icon">
+                            ○
+                        </div>
+
+                        <span>
+                            Explore
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 REGISTER CARD
+            ========================== -->
+
+            <section class="register-card">
+
+
+                <div class="register-logo">
+                    S
+                </div>
+
+
+                <h2>
+                    Create your account
+                </h2>
+
+
+                <p class="register-subtitle">
+                    Join Sociora and start connecting today
+                </p>
+
+
+
+                <form id="registerForm">
+
+
+                    <!-- USERNAME -->
+
+                    <div class="register-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+
+                        <div class="register-input">
+
+                            <span>
+                                @
+                            </span>
+
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Choose a username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="register-group">
+
+                        <label for="registerEmail">
+                            Email
+                        </label>
+
+
+                        <div class="register-input">
+
+                            <span>
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="register-group">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+
+                        <div class="register-input">
+
+                            <span>
+                                🔒
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Create a password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                onclick="toggleRegisterPassword(
+                                    'registerPassword',
+                                    'passwordEye'
+                                )"
+                                id="passwordEye"
+                            >
+                                ◉
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="register-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+
+                        <div class="register-input">
+
+                            <span>
+                                🔒
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                onclick="toggleRegisterPassword(
+                                    'confirmPassword',
+                                    'confirmEye'
+                                )"
+                                id="confirmEye"
+                            >
+                                ◉
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="registerMessage"
+                        class="register-message"
+                    ></div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="register-btn"
+                        id="registerButton"
+                    >
+
+                        Create Account
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <p class="login-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </p>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+
+function toggleRegisterPassword(
+    inputId,
+    buttonId
+) {
+
+    const input =
+        document.getElementById(inputId);
+
+
+    const button =
+        document.getElementById(buttonId);
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        button.textContent = "◉";
+
+    }
+
+    else {
+
+        input.type = "password";
+
+        button.textContent = "◌";
+
+    }
+
+}
+
+
+
+/* =========================
+   REGISTER
+========================= */
+
+document
+    .getElementById("registerForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const username =
+                document
+                    .getElementById("username")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("registerEmail")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("registerPassword")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("registerMessage");
+
+
+            const button =
+                document
+                    .getElementById("registerButton");
+
+
+
+            message.textContent = "";
+
+
+
+            /* PASSWORD MATCH */
+
+            if (password !== confirmPassword) {
+
+                message.textContent =
+                    "Passwords do not match.";
+
+                message.className =
+                    "register-message error";
+
+                return;
+
+            }
+
+
+
+            /* PASSWORD LENGTH */
+
+            if (password.length < 6) {
+
+                message.textContent =
+                    "Password must be at least 6 characters.";
+
+                message.className =
+                    "register-message error";
+
+                return;
+
+            }
+
+
+
+            message.textContent =
+                "Creating your account...";
+
+            message.className =
+                "register-message loading";
+
+
+            button.disabled = true;
+
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/auth/register",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials:
+                                "include",
+
+                            body:
+                                JSON.stringify({
+
+                                    username:
+                                        username,
+
+                                    email:
+                                        email,
+
+                                    password:
+                                        password
+
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (!response.ok) {
+
+                    message.textContent =
+                        data.message ||
+                        "Registration failed.";
+
+                    message.className =
+                        "register-message error";
+
+                    button.disabled = false;
+
+                    return;
+
+                }
+
+
+
+                message.textContent =
+                    "Account created successfully!";
+
+                message.className =
+                    "register-message success";
+
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "login.html";
+
+                    },
+                    700
+                );
+
+
+            }
+
+            catch(error) {
+
+                message.textContent =
+                    "Unable to connect to server.";
+
+                message.className =
+                    "register-message error";
+
+                button.disabled = false;
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1503 @@
+/* =========================================================
+   SOCIORA AUTH
+   LOGIN + REGISTER
+   BLUE / PURPLE PREMIUM DESIGN
+   ========================================================= */
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+body {
+    background: #081252;
+}
+
+
+/* =========================================================
+   LOGIN PAGE
+   ========================================================= */
+
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111761,
+            #171b73,
+            #08145a
+        );
+}
+
+
+/* =========================
+   LOGIN LEFT
+========================= */
+
+.login-hero {
+    width: 50%;
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #4723c4,
+            #202078 40%,
+            #09165c 100%
+        );
+}
+
+
+.login-hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 30px;
+
+    border: 1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 25px;
+}
+
+
+.glow {
+    position: absolute;
+
+    border-radius: 50%;
+}
+
+
+.glow-1 {
+    width: 190px;
+    height: 190px;
+
+    top: -65px;
+    left: -55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5e39ff,
+            #2362ff
+        );
+
+    opacity: .8;
+}
+
+
+.glow-2 {
+    width: 170px;
+    height: 170px;
+
+    left: -50px;
+    bottom: -55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff30dc,
+            #2459ff
+        );
+
+    opacity: .85;
+}
+
+
+.glow-3 {
+    width: 150px;
+    height: 150px;
+
+    right: -55px;
+    top: -55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d92dff,
+            #3b45ff
+        );
+
+    opacity: .8;
+}
+
+
+.dots {
+    position: absolute;
+
+    color: #5570ff;
+
+    font-size: 21px;
+
+    line-height: 13px;
+
+    letter-spacing: 6px;
+
+    z-index: 2;
+}
+
+
+.dots-top {
+    top: 115px;
+    right: 70px;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 75%;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+.sociora-logo {
+    width: 85px;
+    height: 85px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3278ff,
+            #a52cff
+        );
+
+    font-size: 58px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 18px 45px
+        rgba(45,73,255,.45);
+}
+
+
+.hero-content h1 {
+    margin-top: 15px;
+
+    font-size: 43px;
+
+    font-weight: 800;
+}
+
+
+.tagline {
+    margin-top: 4px;
+
+    font-size: 17px;
+
+    color:
+        rgba(255,255,255,.7);
+}
+
+
+.hero-text {
+    margin-top: 65px;
+
+    text-align: left;
+}
+
+
+.hero-text h2 {
+    font-size: 27px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+}
+
+
+.hero-text p {
+    width: 90%;
+
+    margin-top: 14px;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    color:
+        rgba(255,255,255,.65);
+}
+
+
+.wave {
+    position: absolute;
+
+    width: 125%;
+    height: 160px;
+
+    left: -10%;
+    bottom: -85px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b2cff,
+            #322eff,
+            #1164ff
+        );
+
+    border-radius: 50%;
+
+    transform: rotate(-5deg);
+}
+
+
+/* =========================
+   LOGIN RIGHT
+========================= */
+
+.login-section {
+    width: 50%;
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+
+.login-card {
+    width: 100%;
+
+    max-width: 540px;
+
+    background: #fff;
+
+    border-radius: 23px;
+
+    padding: 38px 52px 32px;
+
+    box-shadow:
+        0 25px 65px
+        rgba(0,0,0,.25);
+}
+
+
+.welcome {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.welcome h2 {
+    color: #121d4d;
+
+    font-size: 34px;
+
+    font-weight: 800;
+}
+
+
+.welcome p {
+    margin-top: 7px;
+
+    color: #7b84a4;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   LOGIN INPUT
+========================= */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #121b40;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.input-box {
+    width: 100%;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #d9dfeb;
+
+    border-radius: 13px;
+
+    background: white;
+}
+
+
+.input-box:focus-within {
+    border-color: #653cff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(101,60,255,.1);
+}
+
+
+.input-icon {
+    width: 45px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #7280a3;
+}
+
+
+.input-box input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 15px;
+
+    color: #172047;
+}
+
+
+.input-box input::placeholder {
+    color: #929ab2;
+}
+
+
+.show-password {
+    border: none;
+
+    background: transparent;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    color: #68769b;
+}
+
+
+/* =========================
+   FORGOT
+========================= */
+
+.forgot-row {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -2px;
+
+    margin-bottom: 20px;
+}
+
+
+.forgot-row a {
+    color: #5632ed;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+    width: 100%;
+
+    height: 54px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 750;
+
+    background:
+        linear-gradient(
+            100deg,
+            #8c2cff,
+            #523cff,
+            #176bf6
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(81,59,255,.28);
+
+    transition: .2s;
+}
+
+
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.login-btn:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+.arrow {
+    font-size: 23px;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.auth-message {
+    min-height: 20px;
+
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.auth-message.loading {
+    color: #5b42ed;
+}
+
+
+.auth-message.error {
+    color: #e83c5b;
+}
+
+
+.auth-message.success {
+    color: #15944b;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 23px 0 17px;
+}
+
+
+.divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #dfe3ed;
+}
+
+
+.divider p {
+    color: #9299ae;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social-login {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+}
+
+
+.social-btn {
+    width: 67px;
+
+    height: 45px;
+
+    border: 1px solid #dce1eb;
+
+    border-radius: 11px;
+
+    background: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: .2s;
+}
+
+
+.social-btn:hover {
+    transform: translateY(-2px);
+
+    background: #f7f8fc;
+}
+
+
+.google {
+    color: #4285f4;
+
+    font-size: 22px;
+}
+
+
+.github {
+    color: #111;
+
+    font-size: 19px;
+}
+
+
+.linkedin {
+    color: #0878b9;
+
+    font-size: 18px;
+}
+
+
+.register-text {
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #7d86a2;
+
+    font-size: 13px;
+}
+
+
+.register-text a {
+    color: #5632ed;
+
+    font-weight: 750;
+
+    text-decoration: none;
+
+    margin-left: 3px;
+}
+
+
+/* =========================================================
+   REGISTER PAGE
+   ========================================================= */
+
+.register-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(105,48,255,.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #10145d,
+            #25158a,
+            #10195f
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   REGISTER NAV
+========================= */
+
+.register-nav {
+    height: 65px;
+
+    padding: 0 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.register-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 23px;
+
+    font-weight: 800;
+}
+
+
+.brand-logo {
+    width: 39px;
+
+    height: 39px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3278ff,
+            #a42cff
+        );
+
+    color: white;
+
+    font-size: 23px;
+
+    font-weight: 800;
+}
+
+
+.nav-account {
+    color:
+        rgba(255,255,255,.7);
+
+    font-size: 13px;
+}
+
+
+.nav-account a {
+    color: white;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    margin-left: 5px;
+}
+
+
+/* =========================
+   REGISTER MAIN
+========================= */
+
+.register-main {
+    min-height:
+        calc(100vh - 65px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px 45px 35px;
+}
+
+
+.register-layout {
+    width: 100%;
+
+    max-width: 1050px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr .9fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+
+/* =========================
+   REGISTER HERO
+========================= */
+
+.register-hero {
+    padding: 15px;
+}
+
+
+.register-hero h1 {
+    font-size: 45px;
+
+    line-height: 1.08;
+
+    font-weight: 800;
+}
+
+
+.register-hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a43cff,
+            #3d78ff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.register-hero > p {
+    max-width: 470px;
+
+    margin-top: 17px;
+
+    color:
+        rgba(255,255,255,.67);
+
+    font-size: 15px;
+
+    line-height: 1.55;
+}
+
+
+.register-features {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+
+.register-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 9px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    font-size: 12px;
+}
+
+
+.feature-icon {
+    color: #a363ff;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   REGISTER CARD
+========================= */
+
+.register-card {
+    width: 100%;
+
+    background: white;
+
+    color: #151d43;
+
+    border-radius: 23px;
+
+    padding: 27px 38px;
+
+    box-shadow:
+        0 25px 65px
+        rgba(0,0,0,.25);
+}
+
+
+.register-logo {
+    width: 55px;
+
+    height: 55px;
+
+    margin: 0 auto 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3278ff,
+            #a42cff
+        );
+
+    color: white;
+
+    font-size: 36px;
+
+    font-weight: 800;
+}
+
+
+.register-card h2 {
+    text-align: center;
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+
+.register-subtitle {
+    text-align: center;
+
+    margin-top: 5px;
+
+    margin-bottom: 21px;
+
+    color: #7d86a4;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   REGISTER INPUT
+========================= */
+
+.register-group {
+    margin-bottom: 13px;
+}
+
+
+.register-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #172043;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.register-input {
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    border:
+        1px solid #dce1eb;
+
+    border-radius: 10px;
+
+    padding: 0 10px;
+
+    background: white;
+}
+
+
+.register-input:focus-within {
+    border-color: #643cff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(100,60,255,.09);
+}
+
+
+.register-input > span {
+    width: 30px;
+
+    text-align: center;
+
+    color: #7180a3;
+
+    font-size: 15px;
+}
+
+
+.register-input input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #172047;
+
+    font-size: 13px;
+}
+
+
+.register-input input::placeholder {
+    color: #969db1;
+}
+
+
+.register-input button {
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    color: #6e7899;
+
+    padding: 6px;
+}
+
+
+/* =========================
+   REGISTER BUTTON
+========================= */
+
+.register-btn {
+    width: 100%;
+
+    height: 49px;
+
+    margin-top: 7px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #8c2cff,
+            #533cff,
+            #176bf6
+        );
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 23px
+        rgba(82,60,255,.25);
+}
+
+
+.register-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+.register-btn:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+.register-btn span {
+    font-size: 21px;
+}
+
+
+/* =========================
+   REGISTER MESSAGE
+========================= */
+
+.register-message {
+    min-height: 18px;
+
+    margin-top: 8px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.register-message.error {
+    color: #e53d5c;
+}
+
+
+.register-message.loading {
+    color: #5c42ee;
+}
+
+
+.register-message.success {
+    color: #15954c;
+}
+
+
+.login-link {
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #7c85a1;
+
+    font-size: 13px;
+}
+
+
+.login-link a {
+    color: #5632ed;
+
+    font-weight: 750;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .login-page {
+        flex-direction: column;
+    }
+
+
+    .login-hero {
+        width: 100%;
+
+        min-height: 390px;
+    }
+
+
+    .login-section {
+        width: 100%;
+
+        padding: 25px 18px;
+    }
+
+
+    .register-layout {
+        grid-template-columns: 1fr;
+
+        max-width: 600px;
+    }
+
+
+    .register-hero {
+        text-align: center;
+    }
+
+
+    .register-hero > p {
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .register-features {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .login-hero {
+        min-height: 350px;
+    }
+
+
+    .hero-text {
+        margin-top: 35px;
+    }
+
+
+    .hero-text h2 {
+        font-size: 23px;
+    }
+
+
+    .hero-text p {
+        font-size: 13px;
+    }
+
+
+    .login-card {
+        padding: 30px 25px;
+    }
+
+
+    .welcome h2 {
+        font-size: 29px;
+    }
+
+
+    .register-nav {
+        padding: 0 20px;
+    }
+
+
+    .nav-account {
+        display: none;
+    }
+
+
+    .register-main {
+        padding: 20px;
+    }
+
+
+    .register-card {
+        padding: 25px 22px;
+    }
+
+
+    .register-hero h1 {
+        font-size: 35px;
+    }
+
+
+    .register-features {
+        flex-wrap: wrap;
+    }
+
+}
+/* =========================
+   SMALLER RIGHT LOGIN CARD
+========================= */
+
+.login-section {
+    padding: 20px 35px;
+}
+
+.login-card {
+    max-width: 470px;
+    padding: 30px 38px 26px;
+    border-radius: 21px;
+}
+
+.welcome {
+    margin-bottom: 23px;
+}
+
+.welcome h2 {
+    font-size: 29px;
+}
+
+.welcome p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.input-box {
+    height: 48px;
+    border-radius: 11px;
+}
+
+.input-box input {
+    font-size: 14px;
+}
+
+.forgot-row {
+    margin-bottom: 16px;
+}
+
+.forgot-row a {
+    font-size: 13px;
+}
+
+.login-btn {
+    height: 49px;
+    border-radius: 11px;
+    font-size: 16px;
+}
+
+.divider {
+    margin: 19px 0 14px;
+}
+
+.social-btn {
+    width: 60px;
+    height: 40px;
+}
+
+.register-text {
+    margin-top: 19px;
+    font-size: 12px;
+}
+/* =========================================
+   FINAL BALANCED LOGIN SIZE
+========================================= */
+
+.login-section {
+    padding: 25px 40px;
+}
+
+.login-card {
+    max-width: 510px;
+    padding: 36px 45px 30px;
+    border-radius: 23px;
+}
+
+.welcome {
+    margin-bottom: 27px;
+}
+
+.welcome h2 {
+    font-size: 32px;
+}
+
+.welcome p {
+    font-size: 15px;
+    margin-top: 6px;
+}
+
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.input-box {
+    height: 50px;
+    border-radius: 12px;
+}
+
+.input-box input {
+    font-size: 15px;
+}
+
+.forgot-row {
+    margin-top: 0;
+    margin-bottom: 19px;
+}
+
+.forgot-row a {
+    font-size: 14px;
+}
+
+.login-btn {
+    height: 52px;
+    border-radius: 12px;
+    font-size: 17px;
+}
+
+.divider {
+    margin: 23px 0 17px;
+}
+
+.social-login {
+    gap: 18px;
+}
+
+.social-btn {
+    width: 65px;
+    height: 43px;
+}
+
+.register-text {
+    margin-top: 22px;
+    font-size: 13px;
+}
+/* =========================
+   FINAL COMPACT HEIGHT
+========================= */
+
+.login-card {
+    padding-top: 28px;
+    padding-bottom: 22px;
+}
+
+.welcome {
+    margin-bottom: 20px;
+}
+
+.welcome h2 {
+    font-size: 30px;
+}
+
+.welcome p {
+    margin-top: 4px;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.input-box {
+    height: 46px;
+}
+
+.forgot-row {
+    margin-bottom: 15px;
+}
+
+.login-btn {
+    height: 48px;
+}
+
+.divider {
+    margin-top: 17px;
+    margin-bottom: 12px;
+}
+
+.social-btn {
+    height: 38px;
+}
+
+.register-text {
+    margin-top: 15px;
+}

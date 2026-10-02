@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sociora - Explore</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        .explore-page {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+
+        .explore-header {
+            margin-bottom: 25px;
+        }
+
+
+        .explore-header h1 {
+            font-size: 30px;
+            margin-bottom: 6px;
+        }
+
+
+        .explore-header p {
+            color: var(--muted);
+        }
+
+
+        .explore-search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+
+        .explore-search input {
+            flex: 1;
+
+            padding: 14px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            outline: none;
+        }
+
+
+        .explore-search button {
+            border: none;
+
+            padding: 0 22px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+
+        .section-title {
+            margin: 25px 0 15px;
+
+            font-size: 19px;
+        }
+
+
+        .users-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .user-card {
+            background: var(--card);
+
+            border-radius: 16px;
+
+            padding: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            box-shadow: var(--shadow);
+
+            cursor: pointer;
+        }
+
+
+        .user-card:hover {
+            transform: translateY(-2px);
+        }
+
+
+        .user-avatar {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            overflow: hidden;
+        }
+
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .user-card h3 {
+            font-size: 15px;
+        }
+
+
+        .user-card p {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 4px;
+        }
+
+
+        .result-empty {
+            background: var(--card);
+
+            padding: 45px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            color: var(--muted);
+        }
+
+
+        .search-post {
+            background: var(--card);
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .search-post-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .search-post-avatar {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+
+        .search-post small {
+            color: var(--muted);
+        }
+
+
+        .search-post-content {
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+
+        .search-post-stats {
+            margin-top: 15px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            display: flex;
+
+            gap: 20px;
+        }
+
+
+        @media(max-width:600px) {
+
+            .users-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explore-page {
+                padding: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a
+        href="../index.html"
+        class="brand"
+    >
+
+        <div class="brand-logo">
+
+            <svg viewBox="0 0 50 50" fill="none">
+
+                <path
+                    d="M35 13C31 10 27 8 22 8C16 8 12 11 12 16C12 21 16 23 24 25C32 27 37 30 37 36C37 42 32 45 25 45C19 45 14 43 10 39"
+                    stroke="white"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                />
+
+            </svg>
+
+        </div>
+
+        <span>Sociora</span>
+
+    </a>
+
+
+    <a
+        href="../index.html"
+        class="side-link"
+    >
+        ← Home
+    </a>
+
+</header>
+
+
+
+<main class="explore-page">
+
+
+    <div class="explore-header">
+
+        <h1>
+            Explore
+        </h1>
+
+        <p>
+            Discover people and posts on Sociora.
+        </p>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="explore-search">
+
+        <input
+            type="text"
+            id="exploreSearch"
+            placeholder="Search users or posts..."
+        >
+
+        <button
+            onclick="performSearch()"
+        >
+            Search
+        </button>
+
+    </div>
+
+
+
+    <!-- USERS -->
+
+    <h2 class="section-title">
+        People
+    </h2>
+
+
+    <div
+        id="usersResults"
+        class="users-grid"
+    >
+
+        <div class="result-empty">
+            Search for people to discover users.
+        </div>
+
+    </div>
+
+
+
+    <!-- POSTS -->
+
+    <h2 class="section-title">
+        Posts
+    </h2>
+
+
+    <div id="postsResults">
+
+        <div class="result-empty">
+            Search for posts to see results.
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+// ======================================================
+// SEARCH
+// ======================================================
+
+async function performSearch() {
+
+    const input =
+        document.getElementById(
+            "exploreSearch"
+        );
+
+
+    const query =
+        input.value.trim();
+
+
+    if (!query) {
+
+        document.getElementById(
+            "usersResults"
+        ).innerHTML = `
+            <div class="result-empty">
+                Enter something to search.
+            </div>
+        `;
+
+        document.getElementById(
+            "postsResults"
+        ).innerHTML = "";
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/search?q=${encodeURIComponent(query)}`,
+                {
+                    credentials:
+                        "include"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Search failed."
+            );
+
+            return;
+
+        }
+
+
+        renderUsers(
+            data.users || []
+        );
+
+
+        renderPosts(
+            data.posts || []
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Search failed."
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// RENDER USERS
+// ======================================================
+
+function renderUsers(users) {
+
+    const container =
+        document.getElementById(
+            "usersResults"
+        );
+
+
+    if (!users.length) {
+
+        container.innerHTML = `
+            <div class="result-empty">
+                No users found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        users.map(user => {
+
+            const letter =
+                user.username
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            const avatar =
+                user.avatar
+                    ? `
+                        <img
+                            src="${user.avatar}"
+                            alt=""
+                        >
+                    `
+                    : letter;
+
+
+            return `
+
+                <div
+                    class="user-card"
+                    onclick="
+                        openProfile(
+                            ${user.id}
+                        )
+                    "
+                >
+
+                    <div class="user-avatar">
+                        ${avatar}
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            @${escapeHTML(
+                                user.username
+                            )}
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(
+                                user.bio ||
+                                "No bio yet."
+                            )}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+// ======================================================
+// RENDER POSTS
+// ======================================================
+
+function renderPosts(posts) {
+
+    const container =
+        document.getElementById(
+            "postsResults"
+        );
+
+
+    if (!posts.length) {
+
+        container.innerHTML = `
+            <div class="result-empty">
+                No posts found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        posts.map(post => {
+
+            const username =
+                post.username ||
+                "User";
+
+
+            const letter =
+                username
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            return `
+
+                <div class="search-post">
+
+                    <div
+                        class="search-post-header"
+                    >
+
+                        <div
+                            class="search-post-avatar"
+                        >
+                            ${letter}
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                @${escapeHTML(
+                                    username
+                                )}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${formatDate(
+                                    post.created_at
+                                )}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="search-post-content"
+                    >
+                        ${escapeHTML(
+                            post.content
+                        )}
+                    </div>
+
+
+                    <div
+                        class="search-post-stats"
+                    >
+
+                        <span>
+                            ♡
+                            ${post.like_count || 0}
+                            Likes
+                        </span>
+
+                        <span>
+                            💬
+                            ${post.comment_count || 0}
+                            Comments
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+// ======================================================
+// OPEN PROFILE
+// ======================================================
+
+function openProfile(userId) {
+
+    window.location.href =
+        `profile.html?id=${userId}`;
+
+}
+
+
+// ======================================================
+// ENTER KEY SEARCH
+// ======================================================
+
+document
+    .getElementById("exploreSearch")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                performSearch();
+
+            }
+
+        }
+    );
+
+
+// ======================================================
+// HELPERS
+// ======================================================
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text || "";
+
+    return div.innerHTML;
+
+}
+
+
+function formatDate(date) {
+
+    if (!date) {
+        return "";
+    }
+
+
+    const d =
+        new Date(date);
+
+
+    return d.toLocaleDateString();
+
+}
+
+</script>
+
+
+</body>
+
+</html>
